@@ -248,8 +248,9 @@ def run(argv=None) -> int:
         except OSError as e:
             saved = f"(could not save: {e})"
         print("\n" + text)
-        print(saved + ". Please paste it into a 'Hardware report' issue on "
-              "the project's GitHub page. Thank you!")
+        print(saved + ". Please paste it into a 'Hardware report' issue: "
+              "https://github.com/blue0x1/mystickeys/issues/new/choose "
+              "Thank you!")
         return 0
     if args.cmd == "notify":
         return _cmd_notify(args)

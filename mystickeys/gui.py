@@ -306,7 +306,7 @@ class App:
             w.destroy()
         items = presets_store.load()
         if not items:
-            tk.Label(self.user_pf, text="No saved presets yet — set a color and "
+            tk.Label(self.user_pf, text="No saved presets yet. Set a color and "
                      "click Save.", bg=CARD, fg=MUTED,
                      font=("Segoe UI", 8), wraplength=300,
                      justify="left").pack(anchor="w")
@@ -454,7 +454,7 @@ class App:
 
     # -- about dialog ------------------------------------------------------
     def _about(self):
-        gh_url = "https://github.com/blue0x1"
+        gh_url = "https://github.com/blue0x1/mystickeys"
         win = tk.Toplevel(self.root)
         win.title("About")
         win.configure(bg=BG)

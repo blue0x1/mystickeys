@@ -1,11 +1,11 @@
-# mystickeys — MSI laptop keyboard RGB control (Linux)
+# mystickeys: MSI laptop keyboard RGB control (Linux)
 
 Change the RGB keyboard backlight on MSI gaming laptops. No MSI Center, no
 Windows, no vendor software. A single CLI/GUI that **auto-detects the
-controller** and speaks the right protocol — effectively a mini-OpenRGB scoped
+controller** and speaks the right protocol, effectively a mini-OpenRGB scoped
 to MSI laptop keyboards.
 
-- **Pure Python standard library** — talks to `/dev/hidraw` directly via
+- **Pure Python standard library**: talks to `/dev/hidraw` directly via
   `ioctl` HID feature reports. No `pip install` required.
 - **Multi-backend**: MysticLight + SteelSeries controllers.
 - CLI **and** a small Tkinter GUI.
@@ -15,7 +15,7 @@ to MSI laptop keyboards.
 ## Supported hardware
 | Controller | USB ID(s) | Example models | Status |
 |---|---|---|---|
-| **MysticLight** MS-156x/160x | `1462:1601` `:1603` `:1605` `:1562-1564` `:1570` `:1572` — **plus any other `1462` laptop controller** with the same HID layout | Crosshair 16, Vector, Sword, newer Raider | ✅ supported |
+| **MysticLight** MS-156x/160x | `1462:1601` `:1603` `:1605` `:1562-1564` `:1570` `:1572`, **plus any other `1462` laptop controller** with the same HID layout | Crosshair 16, Vector, Sword, newer Raider | ✅ supported |
 | **SteelSeries 3-zone** | `1770:ff00` | older GL / GE / GP | ⚠️ implemented from docs, **experimental** |
 | **SteelSeries per-key** | `1038:1122` | GE / GS / GT / Stealth | ↪️ detected, delegates to [`msi-perkeyrgb`](https://github.com/Askannz/msi-perkeyrgb) |
 
@@ -39,9 +39,9 @@ Backends: `mysticlight`, `steelseries-3zone`, `steelseries-perkey`
 (see `./bin/mystickeys info`). If an unlisted model works, please report its USB ID
 so it can be added to the tested list.
 
-> Protocol credits: MysticLight —
+> Protocol credits: MysticLight:
 > [natanalt](https://gist.github.com/natanalt/06f1d5854230c788b9b9e7e33ab90b9f);
-> SteelSeries — the MSIKLM / python-msikeys / msi-perkeyrgb projects.
+> SteelSeries: the MSIKLM / python-msikeys / msi-perkeyrgb projects.
 >
 > **Experimental backends** send their documented command bytes but have not
 > been confirmed on real hardware. If you own such a laptop and test it, please
@@ -56,7 +56,7 @@ sudo ./bin/mystickeys color 0,128,255 --brightness 60
 sudo ./bin/mystickeys off
 ```
 
-## Install (recommended — enables running without sudo)
+## Install (recommended, enables running without sudo)
 ```bash
 sudo ./install.sh
 # then, after the udev rule is active (reboot once on a laptop):
@@ -127,7 +127,7 @@ mystickeys effect rainbow -s 10 -d rtl     # slower, right to left
 ```
 They run on the keyboard's own controller (no CPU use, keep going with the
 app closed, survive reboots). In the GUI they're in the **Color waves** card:
-clicking one sets the speed slider (1–12 s) to its tuned speed, and the
+clicking one sets the speed slider (1-12 s) to its tuned speed, and the
 speed and direction controls also apply to the Breath / Cycle / Wave buttons.
 
 This keyboard has 4 lighting zones, not per-key lighting, so moving effects
@@ -145,10 +145,10 @@ keyboard's memory; when they stop, the keyboard returns to its saved effect.
 |---|---|
 | `battery` | zones fill with the charge level (red → yellow → green); the next zone pulses while charging, and the bar breathes red below 15% |
 | `cpu` | zones fill with CPU load, green → yellow → red |
-| `temp` | zones fill with CPU temperature (40–95 °C), blue → green → yellow → red |
+| `temp` | zones fill with CPU temperature (40-95 °C), blue → green → yellow → red |
 | `music` | 4-band equalizer of whatever is playing: bass (left, red) to treble (right, blue). Needs `parec` (PulseAudio/PipeWire) |
 | `fire` | every zone flickers on its own like a flame: dark red, red and orange with the occasional flare |
-| `thunder` | a dim, slowly shifting blue sky; every 1.5–5 s a strike of 1–3 white flickers hits one or two zones (sometimes all) |
+| `thunder` | a dim, slowly shifting blue sky; every 1.5-5 s a strike of 1-3 white flickers hits one or two zones (sometimes all) |
 | `lava` | slow purple, pink and orange blobs drifting between zones at different speeds |
 | `typing` | the zone you type in lights up and fades (`-c` sets the color; the GUI uses the picked color) |
 
@@ -201,7 +201,7 @@ with MSIKeyboard() as kb:
   not matched, use `--device /dev/hidrawN --backend NAME` (see above). The
   udev rule covers every MSI laptop PID (`1462:1xxx`). For non-root access
   with another ID, add a line to `99-mystickeys.rules`.
-- **GUI won't start**: install Tk — `sudo apt install python3-tk`.
+- **GUI won't start**: install Tk with `sudo apt install python3-tk`.
 
 ## Help test other models
 Only the MSI Katana 15 (keyboard MS-1565, `1462:1601`) has been verified so
