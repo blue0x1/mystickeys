@@ -15,6 +15,7 @@ to MSI laptop keyboards.
 ## Quick links
 
 - [Supported hardware](#supported-hardware)
+- [Download](#download)
 - [Quick start](#quick-start-no-install-needs-root-for-raw-hid)
 - [Install](#install-recommended-enables-running-without-sudo)
 - [Usage](#usage)
@@ -59,6 +60,25 @@ so it can be added to the tested list.
 > **Experimental backends** send their documented command bytes but have not
 > been confirmed on real hardware. If you own such a laptop and test it, please
 > report back so the status can be upgraded to "supported".
+
+## Download
+Grab the standalone binary from the
+[latest release](https://github.com/blue0x1/mystickeys/releases/latest). It
+needs no Python and runs on most x86_64 distributions (Ubuntu 20.04+,
+Debian 11+, Fedora, Arch, ...):
+
+```bash
+chmod +x mystickeys-*-linux-x86_64
+mkdir -p ~/.local/bin && mv mystickeys-*-linux-x86_64 ~/.local/bin/mystickeys
+# keyboard access without sudo (once):
+sudo curl -fsSL -o /etc/udev/rules.d/99-mystickeys.rules \
+  https://raw.githubusercontent.com/blue0x1/mystickeys/main/99-mystickeys.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+mystickeys gui
+```
+Keep the binary in a fixed place (like `~/.local/bin`): background live
+effects and the notification flash start it from there. The app-menu entry
+and icon come with `install.sh` from the source code.
 
 ## Quick start (no install, needs root for raw HID)
 ```bash
