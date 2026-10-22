@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=MysticKeys
+GenericName=Keyboard RGB
+Comment=Control the RGB backlight of MSI laptop keyboards
+Exec=mystickeys gui
+Icon=mystickeys
+Terminal=false
+Categories=Settings;HardwareSettings;
+Keywords=rgb;keyboard;backlight;msi;mysticlight;led;lighting;
+StartupWMClass=Mystickeys

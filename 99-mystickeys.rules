@@ -1,0 +1,9 @@
+# Allow non-root users to control MSI laptop keyboard RGB controllers.
+# Installs to /etc/udev/rules.d/99-mystickeys.rules
+#
+# MysticLight: any MSI (vendor 1462) device with a laptop board PID 1xxx
+# (MS-1xxx). Desktop/motherboard Mystic Light controllers (7Bxx+) are left alone.
+KERNEL=="hidraw*", ATTRS{idVendor}=="1462", ATTRS{idProduct}=="1???", MODE="0660", TAG+="uaccess"
+# SteelSeries 3-zone (older GL/GE/GP) and per-key (GE/GS/GT/Stealth) controllers
+KERNEL=="hidraw*", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", MODE="0660", TAG+="uaccess"
+KERNEL=="hidraw*", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1122", MODE="0660", TAG+="uaccess"
