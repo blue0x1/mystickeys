@@ -995,6 +995,7 @@ def _set_window_icon(root) -> None:
     import os
     here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     candidates = [os.path.join(here, "data", "mystickeys-64.png"),
+                  "/usr/local/share/icons/hicolor/64x64/apps/mystickeys.png",
                   "/usr/share/icons/hicolor/64x64/apps/mystickeys.png"]
     for path in candidates:
         if os.path.exists(path):

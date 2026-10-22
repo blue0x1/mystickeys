@@ -18,9 +18,14 @@ def unit_path(name: str) -> str:
     return os.path.join(base, "systemd", "user", name)
 
 
-def launcher() -> str:
+def command() -> str:
+    """How a service starts MysticKeys: the project's launcher when running
+    from a source checkout, otherwise the installed package."""
     root = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    return os.path.join(root, "bin", "mystickeys")
+    script = os.path.join(root, "bin", "mystickeys")
+    if os.path.isfile(script):
+        return f"{sys.executable} {script}"
+    return f"{sys.executable} -m mystickeys"
 
 
 def systemctl(*args) -> subprocess.CompletedProcess:
@@ -39,7 +44,7 @@ Description=MysticKeys: {description}
 After=graphical-session.target
 
 [Service]
-ExecStart={sys.executable} {launcher()} {args}
+ExecStart={command()} {args}
 Restart=on-failure
 RestartSec=3
 

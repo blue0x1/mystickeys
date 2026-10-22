@@ -13,4 +13,4 @@ from .backends import (  # noqa: F401
 )
 from .device import MSIKeyboard, find_hidraw  # noqa: F401
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"

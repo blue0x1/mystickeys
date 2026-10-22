@@ -202,7 +202,25 @@ with MSIKeyboard() as kb:
   with another ID, add a line to `99-mystickeys.rules`.
 - **GUI won't start**: install Tk — `sudo apt install python3-tk`.
 
+## Install with pipx (alternative)
+```bash
+pipx install .                       # from this folder; gives the `mystickeys` command
+sudo install -m 0644 99-mystickeys.rules /etc/udev/rules.d/   # keyboard access without sudo
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+`install.sh` is still the easiest route: it also adds the app-menu entry and icon.
+
+## Development
+Pure Python standard library, no dependencies. Run the tests (they use a
+fake keyboard, so no hardware is touched):
+```bash
+python3 -m unittest discover -s tests
+```
+
 ## Uninstall
 ```bash
 ./uninstall.sh      # asks for sudo; your presets in ~/.config/mystickeys are kept
 ```
+
+## License
+MIT, see [LICENSE](LICENSE).
