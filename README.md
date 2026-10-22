@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/blue0x1/mystickeys/releases/latest">Download</a> ·
-  <a href="#quick-links">Docs</a> ·
-  <a href="#help-test-other-models">Help test your model</a>
+  <a href="https://github.com/blue0x1/mystickeys/releases/latest"><img src="https://img.shields.io/github/downloads/blue0x1/mystickeys/total?label=downloads&color=6ea8ff" alt="downloads"></a>
+  <a href="#quick-links"><img src="https://img.shields.io/badge/docs-README-49d6a0" alt="docs"></a>
+  <a href="#help-test-other-models"><img src="https://img.shields.io/badge/help%20test-your%20model-ffb547" alt="help test your model"></a>
 </p>
 
 Change the RGB keyboard backlight on MSI gaming laptops. No MSI Center, no
