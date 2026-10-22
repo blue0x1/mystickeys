@@ -36,6 +36,12 @@ from .colors import scale
 RGB = Tuple[int, int, int]
 
 
+def _read(path: str) -> str:
+    """Read a small text file (sysfs/procfs) and close it right away."""
+    with open(path) as fh:
+        return fh.read()
+
+
 def _mix(a: RGB, b: RGB, t: float) -> RGB:
     t = max(0.0, min(1.0, t))
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3))
@@ -102,8 +108,8 @@ class Battery(LiveEffect):
             return
         self._read_at = now
         try:
-            self.level = int(open(self.path + "/capacity").read()) / 100
-            status = open(self.path + "/status").read().strip()
+            self.level = int(_read(self.path + "/capacity")) / 100
+            status = _read(self.path + "/status").strip()
             self.charging = status == "Charging"
         except (OSError, ValueError):
             pass
@@ -170,7 +176,7 @@ class Temp(LiveEffect):
         for want in ("coretemp", "k10temp", "zenpower", "acpitz"):
             for hw in sorted(glob.glob("/sys/class/hwmon/hwmon*")):
                 try:
-                    name = open(hw + "/name").read().strip()
+                    name = _read(hw + "/name").strip()
                 except OSError:
                     continue
                 if name == want and os.path.exists(hw + "/temp1_input"):
@@ -181,7 +187,7 @@ class Temp(LiveEffect):
         if now - self._read_at >= 1:
             self._read_at = now
             try:
-                c = int(open(self.path).read()) / 1000
+                c = int(_read(self.path)) / 1000
                 self.target = (c - self.LOW) / (self.HIGH - self.LOW)
             except (OSError, ValueError):
                 pass
@@ -418,7 +424,7 @@ _EVENT = struct.Struct("llHHi")  # struct input_event on 64-bit Linux
 def find_keyboard() -> str:
     """Return the /dev/input/eventN of the built-in keyboard."""
     try:
-        text = open("/proc/bus/input/devices").read()
+        text = _read("/proc/bus/input/devices")
     except OSError as e:
         raise KeyboardError(f"cannot list input devices: {e}") from e
     best = None

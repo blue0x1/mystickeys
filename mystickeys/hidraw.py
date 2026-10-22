@@ -48,7 +48,8 @@ def enumerate_devices() -> List[Tuple[str, int, int]]:
     out: List[Tuple[str, int, int]] = []
     for uevent in glob.glob("/sys/class/hidraw/hidraw*/device/uevent"):
         try:
-            text = open(uevent).read()
+            with open(uevent) as fh:
+                text = fh.read()
         except OSError:
             continue
         hid_id = next((l.split("=", 1)[1] for l in text.splitlines()
@@ -69,7 +70,9 @@ def device_name(node: str) -> str:
     """Return the HID_NAME of a /dev/hidrawN node ('' if unknown)."""
     uevent = f"/sys/class/hidraw/{os.path.basename(node)}/device/uevent"
     try:
-        for line in open(uevent).read().splitlines():
+        with open(uevent) as fh:
+            lines = fh.read().splitlines()
+        for line in lines:
             if line.startswith("HID_NAME="):
                 return line.split("=", 1)[1].strip()
     except OSError:
