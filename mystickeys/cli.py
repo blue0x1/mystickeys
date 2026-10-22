@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from typing import List
 
@@ -85,6 +86,14 @@ def build_parser() -> argparse.ArgumentParser:
                          "test: flash once; run: used by the service")
     nt.add_argument("-c", "--color", default=None,
                     help="flash color (saved; default: white)")
+
+    rp = sub.add_parser("report", help="hardware report for testing your "
+                                       "laptop model (paste it in an issue)")
+    rp.add_argument("--no-test", action="store_true",
+                    help="only collect facts, skip the visual tests")
+    rp.add_argument("-o", "--output", default="mystickeys-report.md",
+                    help="file to save the report to "
+                         "(default: mystickeys-report.md)")
 
     sub.add_parser("gui", help="launch the graphical color picker")
     return p
@@ -227,6 +236,21 @@ def run(argv=None) -> int:
             return 1
     if args.cmd == "list":
         return _cmd_list()
+    if args.cmd == "report":
+        from . import report
+        print("mystickeys hardware report: checks how well your keyboard works "
+              "(about 2 minutes).")
+        text = report.build(test=not args.no_test)
+        try:
+            with open(args.output, "w") as fh:
+                fh.write(text)
+            saved = f"Saved to {os.path.abspath(args.output)}"
+        except OSError as e:
+            saved = f"(could not save: {e})"
+        print("\n" + text)
+        print(saved + ". Please paste it into a 'Hardware report' issue on "
+              "the project's GitHub page. Thank you!")
+        return 0
     if args.cmd == "notify":
         return _cmd_notify(args)
     if args.cmd == "live":

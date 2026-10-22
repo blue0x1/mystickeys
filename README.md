@@ -90,6 +90,7 @@ Commands:
   list                      list all HID devices and whether they match
   info                      list all supported controllers and capabilities
   notify on|off|status|test notification flash (-c COLOR with on/test)
+  report                    hardware report for testing your model
   gui                       graphical color picker
 ```
 
@@ -201,6 +202,18 @@ with MSIKeyboard() as kb:
   udev rule covers every MSI laptop PID (`1462:1xxx`). For non-root access
   with another ID, add a line to `99-mystickeys.rules`.
 - **GUI won't start**: install Tk — `sudo apt install python3-tk`.
+
+## Help test other models
+Only the MSI Katana 15 (keyboard MS-1565, `1462:1601`) has been verified so
+far. If you have another MSI laptop, a 2-minute test helps a lot:
+
+```bash
+./bin/mystickeys report        # add sudo if you haven't run install.sh
+```
+It collects your laptop model and keyboard details, shows a few colors and
+effects, and asks what you see (nothing is saved to the keyboard). Then paste
+the result into a **Hardware report** issue. No serial numbers or personal
+data are collected.
 
 ## Install with pipx (alternative)
 ```bash
