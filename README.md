@@ -39,10 +39,6 @@ Backends: `mysticlight`, `steelseries-3zone`, `steelseries-perkey`
 (see `./bin/mystickeys info`). If an unlisted model works, please report its USB ID
 so it can be added to the tested list.
 
-> Protocol credits: MysticLight:
-> [natanalt](https://gist.github.com/natanalt/06f1d5854230c788b9b9e7e33ab90b9f);
-> SteelSeries: the MSIKLM / python-msikeys / msi-perkeyrgb projects.
->
 > **Experimental backends** send their documented command bytes but have not
 > been confirmed on real hardware. If you own such a laptop and test it, please
 > report back so the status can be upgraded to "supported".
