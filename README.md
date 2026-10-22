@@ -8,9 +8,26 @@ to MSI laptop keyboards.
 - **Pure Python standard library**: talks to `/dev/hidraw` directly via
   `ioctl` HID feature reports. No `pip install` required.
 - **Multi-backend**: MysticLight + SteelSeries controllers.
-- CLI **and** a small Tkinter GUI.
-- Zones, brightness, and effects (steady / breath / cycle / wave) where the
-  controller supports them.
+- CLI **and** a Tkinter GUI with an app-menu entry.
+- Colors, zones and brightness; color waves; live effects (battery, CPU,
+  temperature, music, typing, fire, thunder, lava lamp); a notification flash.
+
+## Quick links
+
+- [Supported hardware](#supported-hardware)
+- [Quick start](#quick-start-no-install-needs-root-for-raw-hid)
+- [Install](#install-recommended-enables-running-without-sudo)
+- [Usage](#usage)
+- [Color waves](#color-waves)
+- [Live effects](#live-effects)
+- [Notification flash](#notification-flash)
+- [Use as a library](#use-as-a-library)
+- [Troubleshooting](#troubleshooting)
+- [Help test other models](#help-test-other-models)
+- [Install with pipx](#install-with-pipx-alternative)
+- [Development](#development)
+- [Uninstall](#uninstall)
+- [License](#license)
 
 ## Supported hardware
 | Controller | USB ID(s) | Example models | Status |
@@ -105,8 +122,8 @@ mystickeys off
 ```
 
 ## Color waves
-Ready-made wave presets in the style of MSI Center, tuned by eye on a
-Katana 15 (MS-1565):
+Ready-made wave presets in the style of MSI Center, tuned by eye on real
+hardware:
 
 | Preset | Colors | Speed |
 |---|---|---|
@@ -200,8 +217,8 @@ with MSIKeyboard() as kb:
 - **GUI won't start**: install Tk with `sudo apt install python3-tk`.
 
 ## Help test other models
-Only the MSI Katana 15 (keyboard MS-1565, `1462:1601`) has been verified so
-far. If you have another MSI laptop, a 2-minute test helps a lot:
+So far only one laptop model has been verified on real hardware. If you have
+an MSI laptop, a 2-minute test helps a lot:
 
 ```bash
 ./bin/mystickeys report        # add sudo if you haven't run install.sh

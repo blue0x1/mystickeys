@@ -8,8 +8,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from mystickeys.backends import MysticLightBackend  # noqa: E402
 
-# Report descriptor of a real MSI Katana 15 keyboard (MS-1565, 1462:1601)
-MS1565_DESCRIPTOR = bytes.fromhex(
+# Report descriptor of a real MysticLight laptop keyboard (1462:1601)
+MYSTICLIGHT_DESCRIPTOR = bytes.fromhex(
     "06ff000901a10185010901150025017508953fb18285010901918285020902150025"
     "017508953fb18285030903150025017508953f9182850309038182850409041500250175"
     "089501b18285040904918285050905150025017501818209057501b182750781838505"

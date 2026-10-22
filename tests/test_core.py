@@ -3,7 +3,7 @@
 import unittest
 from unittest import mock
 
-from helpers import MS1565_DESCRIPTOR, fake_mysticlight, keyframes_of
+from helpers import MYSTICLIGHT_DESCRIPTOR, fake_mysticlight, keyframes_of
 
 from mystickeys import backends
 from mystickeys.backends import KeyboardError, MysticLightBackend
@@ -31,8 +31,8 @@ class Colors(unittest.TestCase):
 
 
 class Descriptor(unittest.TestCase):
-    def test_ms1565(self):
-        d = parse_descriptor(MS1565_DESCRIPTOR)
+    def test_mysticlight_keyboard(self):
+        d = parse_descriptor(MYSTICLIGHT_DESCRIPTOR)
         self.assertEqual(d.feature_size(1), 64)
         self.assertEqual(d.feature_size(2), 64)
         self.assertTrue(d.vendor_defined)  # MSI writes the page byte-swapped
@@ -59,18 +59,18 @@ class Detection(unittest.TestCase):
         self.assertEqual(hit[4], "known USB ID")
 
     def test_unlisted_laptop_matched_by_descriptor(self):
-        desc = parse_descriptor(MS1565_DESCRIPTOR)
+        desc = parse_descriptor(MYSTICLIGHT_DESCRIPTOR)
         hit = self.detect([("/dev/hidraw5", 0x1462, 0x1599)], {"/dev/hidraw5": desc})
         self.assertIs(hit[0], MysticLightBackend)
         self.assertEqual(hit[4], "matched by HID descriptor")
 
     def test_motherboard_never_matched(self):
-        desc = parse_descriptor(MS1565_DESCRIPTOR)
+        desc = parse_descriptor(MYSTICLIGHT_DESCRIPTOR)
         hit = self.detect([("/dev/hidraw5", 0x1462, 0x7C37)], {"/dev/hidraw5": desc})
         self.assertIsNone(hit)
 
     def test_other_vendor_never_matched(self):
-        desc = parse_descriptor(MS1565_DESCRIPTOR)
+        desc = parse_descriptor(MYSTICLIGHT_DESCRIPTOR)
         hit = self.detect([("/dev/hidraw5", 0x1234, 0x1601)], {"/dev/hidraw5": desc})
         self.assertIsNone(hit)
 

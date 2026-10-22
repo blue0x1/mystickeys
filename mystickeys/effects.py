@@ -22,7 +22,7 @@ RGB = Tuple[int, int, int]
 # MSI Center allows 3-12 s; we go down to 1 s for faster presets like Police
 SPEED_MIN, SPEED_MAX = 1.0, 12.0
 
-# Tuned by eye on an MS-1565 (Katana 15): (255,128,0) reads orange and
+# Tuned by eye on real hardware: (255,128,0) reads orange and
 # (255,255,0) yellow; pink/yellow/cyan and magenta/cyan sets looked wrong.
 RED, ORANGE, YELLOW = (255, 0, 0), (255, 128, 0), (255, 255, 0)
 GREEN, CYAN, BLUE = (0, 255, 0), (0, 255, 255), (0, 0, 255)

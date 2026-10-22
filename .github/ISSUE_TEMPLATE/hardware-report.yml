@@ -17,7 +17,7 @@ body:
     id: model
     attributes:
       label: Laptop model
-      placeholder: e.g. MSI Katana 15 B12UDXK
+      placeholder: e.g. MSI GF63 Thin 11UC
     validations:
       required: true
   - type: textarea

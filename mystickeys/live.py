@@ -200,7 +200,7 @@ class Fire(LiveEffect):
     """Each zone flickers on its own like a flame: smooth, never jumpy."""
     fps = 30
     # ember -> red -> orange -> yellow-orange (orange/yellow checked by eye
-    # on an MS-1565; similar reds looked identical, so the range is wide)
+    # on real hardware; similar reds looked identical, so the range is wide)
     STOPS = [(90, 0, 0), (255, 0, 0), (255, 60, 0), (255, 128, 0), (255, 175, 0)]
     JITTER = 0.035   # random movement per frame
     SMOOTH = 0.08    # how quickly a zone follows its target (lower = calmer)
