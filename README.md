@@ -260,7 +260,8 @@ an MSI laptop, a 2-minute test helps a lot:
 ```
 It collects your laptop model and keyboard details, shows a few colors and
 effects, and asks what you see (nothing is saved to the keyboard). Then paste
-the result into a **Hardware report** issue. No serial numbers or personal
+the result into a
+[**Hardware report** issue](https://github.com/blue0x1/mystickeys/issues/new/choose). No serial numbers or personal
 data are collected.
 
 ## Install with pipx (alternative)
