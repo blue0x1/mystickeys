@@ -19,8 +19,10 @@ def unit_path(name: str) -> str:
 
 
 def command() -> str:
-    """How a service starts MysticKeys: the project's launcher when running
-    from a source checkout, otherwise the installed package."""
+    """How a service starts MysticKeys: the standalone binary itself, the
+    project's launcher in a source checkout, or else the installed package."""
+    if getattr(sys, "frozen", False):  # PyInstaller binary
+        return os.path.realpath(sys.executable)
     root = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     script = os.path.join(root, "bin", "mystickeys")
     if os.path.isfile(script):

@@ -878,7 +878,9 @@ class App:
 def _set_window_icon(root) -> None:
     """Use the app icon for the window/taskbar (project or installed copy)."""
     import os
-    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # project folder, or the unpacked bundle when running as a binary
+    here = getattr(sys, "_MEIPASS", None) or \
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     candidates = [os.path.join(here, "data", "mystickeys-64.png"),
                   "/usr/local/share/icons/hicolor/64x64/apps/mystickeys.png",
                   "/usr/share/icons/hicolor/64x64/apps/mystickeys.png"]
