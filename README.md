@@ -1,4 +1,19 @@
-# mystickeys: MSI laptop keyboard RGB control (Linux)
+<p align="center">
+  <img src="data/mystickeys.svg" width="140" alt="mystickeys logo">
+</p>
+
+<h1 align="center">mystickeys</h1>
+
+<p align="center">
+  <b>MSI laptop keyboard RGB control for Linux</b><br>
+  Colors, color waves, live effects and notification flash. No MSI Center needed.
+</p>
+
+<p align="center">
+  <a href="https://github.com/blue0x1/mystickeys/releases/latest">Download</a> ·
+  <a href="#quick-links">Docs</a> ·
+  <a href="#help-test-other-models">Help test your model</a>
+</p>
 
 Change the RGB keyboard backlight on MSI gaming laptops. No MSI Center, no
 Windows, no vendor software. A single CLI/GUI that **auto-detects the
