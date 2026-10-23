@@ -3,6 +3,7 @@
 </p>
 
 <h1 align="center">mystickeys</h1>
+<img height="522"  width="100%" alt="live effects" src="https://github.com/user-attachments/assets/cfa31e48-a5f0-4531-963d-9d2913028c5d" />
 
 <p align="center">
   <b>MSI laptop keyboard RGB control for Linux</b><br>
@@ -199,6 +200,9 @@ keyboard's memory; when they stop, the keyboard returns to its saved effect.
 | `thunder` | a dim, slowly shifting blue sky; every 1.5-5 s a strike of 1-3 white flickers hits one or two zones (sometimes all) |
 | `lava` | slow purple, pink and orange blobs drifting between zones at different speeds |
 | `typing` | the zone you type in lights up and fades (`-c` sets the color; the GUI uses the picked color) |
+
+
+
 
 ```bash
 mystickeys live music                     # in this terminal, until Ctrl+C
